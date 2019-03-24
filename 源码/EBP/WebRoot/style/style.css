@@ -1,0 +1,251 @@
+@charset "utf-8";
+
+body{
+    font-size: 16px;
+    font-family: "宋体", Helvetica, sans-serif; 
+    /* background-image: url("../images/timg.jpg"); */
+;
+}
+#page{
+    margin: 0 auto; 
+    width: 50%; 
+    height: 100%;
+    center;
+}
+
+/* 布局第1行样式 */
+#header{
+    margin: 10px 0 0 0; height: 125px;
+    border: 1px solid #CCCC00; 
+}
+#logo{
+    width: 200px; height: 112px; float: left;
+    background: #FFFFFF; padding: 14px 0 0 0;
+    text-align: center; 
+}
+#banner{
+    width: 798px; height: 125px; float: left;
+    background-color:rgba(0,0,0,0);
+    text-align: center;
+}
+#banner h3{
+	font-family: "微软雅黑"; font-size: 23px; 
+	line-height: 22px;
+}
+#banner h4{
+	font-family: "楷体"; font-size: 21px; 
+    line-height: 8px;  
+}
+#banner h5{
+    font-size: 13px; font-weight: normal;
+    text-align: right; 
+    line-height: 0px; 
+    padding-right: 12px;
+}
+
+/* 布局第2行样式 */
+#main_body{
+    height: 455px;
+    border: 1px solid #CCCCFF; 
+    
+}
+#nav_menu{
+    width: 200px; height: 99%; float: left;
+    background: #CCddff; 
+    padding: 6px 0 0 0;
+}
+#nav_menu h3{
+    font-size: 16px; color: red; 
+    line-height: 8px;
+    text-align: center;
+}
+#nav_menu ul li{
+    list-style-image: url("../images/bullet.gif");
+    line-height: 50px;
+    font-size: 30px;
+}
+#nav_menu hr{
+	width: 90%; 
+	height: 1px;
+}
+
+#content{
+    width: 780px; height: 100%; 
+    font-family: Helvetica, "宋体";
+    padding: 10px 0 0 10px;
+    line-height: 22px;
+    text-align: center;
+}
+
+/* 布局第3行样式 */
+
+#guess_like{
+    width: 99%; height: 130px; float: left;
+    text-align: left;
+    position: absolute;
+    left: 10px; bottom: 10px;
+    /*border: 1px solid blue;*/
+}
+
+#guess_like div {
+    width: 25%; height: 100%;
+    text-align: center; float: left;
+}
+
+#guess_like img {
+    width: 150px; 
+    height:220px; 
+    border: 0;
+}
+
+
+#footer{
+	width: 50%; height: 40px; float: right;
+    text-align: right;
+}
+#footer hr{
+    width: 100%; height:1px;
+    border:none; border-top:1px solid blue;
+    text-align: right; margin: 0
+}
+#footer h6{
+    font-family: Helvetica, san-serif;
+    font-size: 13px; font-weight: normal;
+    margin-top: 10px;
+}
+
+/* 通用样式 */
+a, a:link, a:visited{
+    text-decoration: none;
+    color: blue;
+}
+
+.info_msg{
+    text-align: left;
+    font-size: 14px; font-style: italic;
+    color: blue;
+}
+.err_msg{
+	text-align: left;
+	font-size: 14px; font-style: italic;
+	color: red;
+}
+
+.list_table{
+    width: 100%; margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+.list_table td, .list_table th{
+    border: 1px solid #CAD9EA;
+/*     color: #666; */
+    height: 30px;
+}
+.list_table thead th{
+    background-color: #CCE8EB;
+    width: 100px;
+}
+.list_table tr:nth-child(odd){
+    background: #fff;
+}
+.list_table tr:nth-child(even){
+    background: #F5FAFA;
+}
+
+.page_msg{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+}
+.page_msg a{
+    margin: 0 10px 0 10px;
+}
+
+/* 表单区块样式 */
+#filter_form{
+    width: 100%; float: left;
+    font-size: 12px;
+    text-align: left; line-height: 40px; 
+}
+#filter_form input submit{
+	width: 80px; height: 18px;
+}
+#filter_form select{
+    width: 80px; height: 22px;
+}
+#filter_form span{
+    margin-left: 10px;
+}
+
+#login_form{
+	width: 50%; height: 200px;
+    margin: 60px auto; 
+    /*border: 1px solid blue;*/ 
+}
+// zxq
+#update_form{
+    width: 60%; height: 100%;
+    margin: 70px auto; 
+    /*border: 1px solid blue;*/ 
+}
+#center-div{
+	width:50%;
+	heiht:10%;
+	float: left;
+	text-align: center;
+	margin: 20px auto; 
+}
+
+.main_img{
+	text-align: center; 
+	width: 100%; 
+	margin: 20px auto;
+}
+
+.err_msg{
+	text-align: left;
+	font-size: 14px; font-style: italic;
+	color: red;
+}
+
+.remind_info{
+	font-size:'-1'; 
+	color:red;
+}
+
+.update_table tr{
+	border-top: 1px solid #EE00EE;
+}
+.update_table submit{
+	border-top: 1px solid #EE00EE;
+		
+}
+
+.center-content{
+	center; 
+	margin: 80px auto; 
+	width:40%;
+}
+
+.update_table tr td span{
+	text-align:left;
+}
+
+.add_table tr:nth-child(odd){
+	text-align:right;
+	background: #fff;
+}
+.add_table tr:nth-child(even){
+	text-align:right;
+	background: #F5FAFA;
+}
+
+.balance_info{
+	font-size:'-1'; 
+	color:red;
+}
+.filmImg{
+	width:100%;
+	heiht:100%;
+}
+

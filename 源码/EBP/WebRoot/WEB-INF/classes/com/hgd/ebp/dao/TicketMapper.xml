@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.TicketMapper">
+	<resultMap type="com.hgd.ebp.domain.Ticket" id="ticket">  
+      
+    </resultMap> 
+    
+    <select id="queryMaxCount" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(tid) FROM Ticket 
+        <where>
+            <if test = "date!=null "> 
+               startTime BETWEEN #{date} AND #{edate}
+            </if> 
+            <if test="price !=null and price !=0"> 
+                <if test = "date!=null"> 
+                    AND 
+                </if> 
+                price = #{price}
+            </if> 
+            <if test="qBegin != null ">
+            	<if test="qEnd != null ">
+            	startTime BETWEEN #{qBegin} AND #{qEnd}
+            	</if>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAll" resultMap="ticket">
+        SELECT * FROM ticket  ORDER BY tid DESC
+    </select>
+    
+    <select id="queryByPage" parameterType="java.util.Map" resultMap="ticket">
+        SELECT * FROM Ticket
+        <where>
+            <if test = "date!=null "> 
+               startTime BETWEEN #{date} AND #{edate}
+            </if> 
+            <if test="price !=null and price !=0"> 
+                <if test = "date!=null"> 
+                    AND 
+                </if> 
+                price = #{price}
+            </if> 
+            <if test="qBegin != null ">
+            	<if test="qEnd != null ">
+            	startTime BETWEEN #{qBegin} AND #{qEnd}
+            	</if>
+            </if>
+        </where>
+        ORDER BY tid DESC
+        LIMIT #{startRow}, #{rowCount}
+    </select>
+
+	<select id="getTicket" parameterType="int" resultMap="ticket">
+        SELECT * FROM Ticket WHERE tid = #{tid}
+    </select>
+    
+    <select id="queryLessThenCount" parameterType="int" resultType="int">
+        SELECT COUNT(tid) FROM Ticket WHERE tid&lt;#{tid} ORDER BY TID DESC
+    </select>
+    
+    <update id="reduceTicket" >
+        UPDATE Ticket SET balance=balance-#{1} WHERE tid=#{0}
+    </update>
+    
+    <update id="UpdateStatus" parameterType="int">
+        UPDATE Ticket SET status=1-status WHERE tid=#{tid}
+    </update>
+    
+    
+    <update id="updateTicket" parameterType="ticket">
+    	UPDATE Ticket SET descr=#{descr},startTime=#{startTime},amount=#{amount},balance=#{balance} ,price=#{price} WHERE tid=#{tid}
+    </update>
+    
+    <insert id="insert" parameterType="ticket" useGeneratedKeys="true" keyProperty="tid">
+        INSERT INTO Ticket ( descr, startTime, amount, balance, price, status) values( #{descr}, #{startTime},#{amount}, #{balance}, #{price}, #{status})
+    </insert>
+    
+</mapper>

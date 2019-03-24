@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.OrderMngMapper">
+	<resultMap type="com.hgd.ebp.domain.OrderMng" id="ordermng">  
+      
+    </resultMap> 
+    
+    
+    <select id="queryAll1" parameterType="java.util.Map" resultMap="ordermng">
+        SELECT user.uid, Orders.oid, descr, commitTime, Orders.amount, name, username, idCard 
+			FROM user, Orders, orderlist  
+			<where>
+			 user.uid=Orders.uid AND Orders.oid=orderlist.oid 
+			 <if test = "begin != null and end != null">
+			 	AND commitTime BETWEEN #{begin} AND #{end}
+			 
+			 </if>
+			</where>
+    </select>
+    <select id="queryAll2" parameterType="java.util.Map" resultMap="ordermng">
+        SELECT user.uid, Orders.oid, descr, commitTime, Orders.amount, name, username, idCard 
+			FROM user, Orders, orderlist  
+			<where>
+			 user.uid=Orders.uid AND Orders.oid=orderlist.oid 
+			
+			 	<if test = "oid != 0 and oid!= null">
+			 		AND Orders.oid = #{oid}
+			 	</if>
+			 	<if test = "username != null and username != '' ">
+			 		AND (username = #{username} or name = #{username})
+			 	</if>
+			 	<if test = "idCard != null and idCard != '' ">
+			 		AND idCard = #{idCard}
+			 	</if>
+		
+			</where>
+    </select>
+
+  
+
+    
+    
+</mapper>

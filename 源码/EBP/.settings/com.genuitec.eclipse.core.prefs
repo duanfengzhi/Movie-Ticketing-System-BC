@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/user/index.jsp,WebRoot/js/layui.js,WebRoot/user/bookingTicket.jsp,WebRoot/META-INF/context.xml,WebRoot/js/jquery.seat-charts.min.js,WebRoot/admin/index.jsp,WebRoot/js/jquery-3.3.1.min.js,WebRoot/WEB-INF/jspf/user/BookingTicketBody.jsp,WebRoot/js/layui.all.js,WebRoot/WEB-INF/jspf/admin/LoginBody.jsp,WebRoot/index.jsp,WebRoot/WEB-INF/jspf/admin/ListTicketBody.jsp
+validator.Unchecked=

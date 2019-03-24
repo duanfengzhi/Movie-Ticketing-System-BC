@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.UserMapper">
+	<resultMap type="com.hgd.ebp.domain.User" id="user">  
+      
+    </resultMap> 
+    
+    <update id="AddMoney" >
+    	UPDATE User  SET BALANCE=BALANCE+#{0} WHERE username =#{1}
+    </update>
+    
+    <select id="queryMaxCount1" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(uid) FROM User 
+        <where>
+            <if test = "begin!=null and end!=null"> 
+               regTime BETWEEN #{begin} AND #{end}
+            </if> 
+        </where>
+    </select>
+    
+    <select id="queryMaxCount2" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(uid) FROM User 
+        <where>
+        		1=1
+            <if test = "idCard !=null and idCard !='' "> 
+               and idCard=#{idCard}
+            </if>
+            <if test = "username !=null and username != '' ">
+               and ( username=#{username} or name = #{username} )
+            </if>
+            <if test = "telno !=null and telno != '' "> 
+               and telno=#{telno}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByPage1" parameterType="java.util.Map" resultMap="user">
+        SELECT * FROM user
+        <where>
+        	 <if test = "begin!=null and end!=null"> 
+               regTime BETWEEN #{begin} AND #{end}
+            </if> 
+        </where>
+        LIMIT #{startRow}, #{rowCount}
+    </select>
+    
+    <select id="queryByPage2" parameterType="java.util.Map" resultMap="user">
+        SELECT * FROM user
+        <where>
+        	1=1
+            <if test = "idCard !=null and idCard !='' "> 
+               and idCard=#{idCard}
+            </if>
+            <if test = "username !=null  and username != '' "> 
+               and ( username=#{username} or name = #{username} )
+            </if>
+            <if test = "telno !=null and telno != '' "> 
+               and telno=#{telno}
+            </if>
+        </where>
+        LIMIT #{startRow}, #{rowCount}
+    </select>
+    
+    <select id="queryByNamePassword"  resultMap="user">
+        SELECT * FROM user
+        <where>
+            <if test = "#{0} !=null and #{1} != null"> 
+               password=#{1} AND username=#{0}
+            </if>
+        </where>
+    </select>
+    <select id="queryByUid"  parameterType="int" resultMap="user">
+        SELECT * FROM user WHERE uid=#{uid}
+    </select>
+
+	
+    
+    <update id="UpdateStatus" parameterType="int">
+        UPDATE User SET status=1-status WHERE uid=#{uid}
+    </update>
+    
+    <update id="update" parameterType="user">
+    	UPDATE User SET username=#{username} , password =#{password} , name =#{name} , gender=#{gender}, idCard=#{idCard}, address=#{address}, telno=#{telno}, balance=#{balance},status=#{status} WHERE uid=#{uid}
+    </update>
+    <update id="reduceBalance" >
+    	UPDATE User SET balance=balance-#{1}  WHERE uid=#{0}
+    </update>
+    
+    <insert id="insert" parameterType="user" useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO User (username, password, name,gender, idCard, address, telno,regTime, balance, status) values(#{username}, #{password}, #{name},#{gender}, #{idCard}, #{address}, #{telno},#{regTime}, #{balance}, #{status}) 
+    </insert>
+    
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.AdminMapper">
+	<resultMap type="com.hgd.ebp.domain.Admin" id="admin">  
+      
+    </resultMap> 
+    
+    
+    <select id="queryByNamePassword" parameterType="java.util.Map" resultMap="admin">
+        SELECT * FROM AdminUser
+        <where>
+            <if test = "adminname!=null and password!=null"> 
+               <if test = "adminname !=null">
+               		username=#{adminname}
+               </if>
+               <if test ="password!=null">
+               		<if test="adminname!=null">
+               		AND
+               		</if>
+               		password=#{password}
+               </if>
+            </if> 
+        </where>
+    </select>
+
+</mapper>

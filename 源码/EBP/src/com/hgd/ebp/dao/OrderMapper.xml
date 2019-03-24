@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.OrderMapper">
+	<resultMap type="com.hgd.ebp.domain.Order" id="order">  
+      
+    </resultMap> 
+    
+    <select id="queryMaxCount" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(oid) FROM Orders
+     
+    </select>
+
+   
+    
+    <select id="queryByPage" parameterType="java.util.Map" resultMap="order">
+        SELECT * FROM Orders
+        
+        LIMIT #{startRow}, #{rowCount}
+    </select>
+
+	
+    
+    <insert id="insert" parameterType="order" useGeneratedKeys="true" keyProperty="oid">
+        INSERT INTO Orders (commitTime, amount, uid) values(#{commitTime}, #{amount},#{uid})
+    </insert>
+    
+</mapper>

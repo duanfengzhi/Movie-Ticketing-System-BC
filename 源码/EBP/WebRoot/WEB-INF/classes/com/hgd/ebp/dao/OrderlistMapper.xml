@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgd.ebp.dao.OrderlistMapper">
+	<resultMap type="com.hgd.ebp.domain.Orderlist" id="orderlist">  
+      
+    </resultMap> 
+    
+   <select id="queryAll" resultMap="orderlist">
+        SELECT * FROM orderlist 
+    </select>
+
+    
+    <insert id="insert" parameterType="orderlist" useGeneratedKeys="true" keyProperty="lid">
+        INSERT INTO Orderlist (descr, price, quantity, amount, oid) values(#{descr}, #{price}, #{quantity}, #{amount}, #{oid})
+    </insert>
+    
+</mapper>
