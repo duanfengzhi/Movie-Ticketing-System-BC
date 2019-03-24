@@ -27,51 +27,51 @@
 ![1.png](./image/user/1.png)
 
 文件上传
-![2.png](./image/user/2.png)
+![2.png](./image/user/2.PNG)
 
 修改个人信息
-![3.png](./image/user/3.png)
+![3.png](./image/user/3.PNG)
 
 用户登录
 ![4.png](./image/user/4.png)
 
 账户充值
-![5.png](./image/user/5.png)
+![5.png](./image/user/5.PNG)
 
 ## 管理员模块 ##
 
 管理员登录
-![002.png](./image/admin/002.png)
+![002.png](./image/admin/002.PNG)
 
 
 首页
-![001.png](./image/admin/001.png)
+![001.png](./image/admin/001.PNG)
 
 
 票项管理——查询票项
-![003.png](./image/admin/003.png)
+![003.png](./image/admin/003.PNG)
 
 
 票项管理——添加新票项
-![004.png](./image/admin/004.png)
+![004.png](./image/admin/004.PNG)
 
 
 票项管理——修改票项
-![005.png](./image/admin/005.png)
+![005.png](./image/admin/005.PNG)
 
-![006.png](./image/admin/006.png)
+![006.png](./image/admin/006.PNG)
 
 
 用户管理——根据日期查询用户
-![009.png](./image/admin/009.png)
+![009.png](./image/admin/009.PNG)
 
 
 用户管理——根据姓名查询用户
-![008.png](./image/admin/008.png)
+![008.png](./image/admin/008.PNG)
 
 
 订单管理——根据日期查询订单
-![010.png](./image/admin/010.png)
+![010.png](./image/admin/010.PNG)
 
 
 订单管理——根据订单号/姓名/用户名/身份证号 查询订单
