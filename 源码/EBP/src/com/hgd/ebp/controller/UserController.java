@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hgd.ebp.domain.Ticket;
 import com.hgd.ebp.domain.User;
 import com.hgd.ebp.exception.UserLoginException;
 import com.hgd.ebp.filter.UserLoginFilter;
@@ -115,9 +116,23 @@ public class UserController extends HttpServlet {
 		return "index";
 	}
 	@RequestMapping(value="/user/reduceBalanceCtrl")
-	public String reduceBalance(Model model, HttpSession session,double amount)
+	@SuppressWarnings("unchecked")
+	public String reduceBalance(Model model, HttpSession session)
 			throws ServletException, IOException {
 		int uid = (int)session.getAttribute("uid");
+		List<Integer> ownlist = (List<Integer>)session.getAttribute("ownticket");
+		List<Integer> numList = (List<Integer>)session.getAttribute("numList");
+		List<Ticket> tickets = (List<Ticket>)session.getAttribute("tickets");
+		double amount = 0;
+		if (numList != null) {
+			for (int i = 0; i < numList.size(); i++) {
+				int p = 0;
+				for (; p < tickets.size(); p++) {
+					if (tickets.get(p).getTid() == ownlist.get(i)) break;
+				}
+				amount += numList.get(i) * tickets.get(p).getPrice();
+			}
+		}
 		userSvc.reduceBalance(uid, amount);
 		
 		List<User> list=userSvc.queryByUid(uid);
